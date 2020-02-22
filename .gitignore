@@ -1,0 +1,6 @@
+.DS_Store
+.env
+.vscode
+.serverless
+config.json
+node_modules

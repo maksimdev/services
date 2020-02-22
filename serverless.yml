@@ -1,0 +1,99 @@
+service: services
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  createUser:
+    handler: api/users/createUser.createUser
+    events:
+      - http:
+          path: user
+          method: post
+  getUser:
+    handler: api/users/getUser.getUser
+    events:
+      - http:
+          path: user
+          method: get
+  getUsers:
+    handler: api/users/getUsers.getUsers
+    events:
+      - http:
+          path: users
+          method: get
+  updateUser:
+    handler: api/users/updateUser.updateUser
+    events:
+      - http:
+          path: user
+          method: put
+  deleteUser:
+    handler: api/users/deleteUser.deleteUser
+    events:
+      - http:
+          path: user
+          method: delete
+  
+  createCategory:
+    handler: api/categories/createCategory.createCategory
+    events:
+      - http:
+          path: category
+          method: post
+  getCategory:
+    handler: api/categories/getCategory.getCategory
+    events:
+      - http:
+          path: category
+          method: get
+  getCategories:
+    handler: api/categories/getCategories.getCategories
+    events:
+      - http:
+          path: categories
+          method: get
+  updateCategory:
+    handler: api/categories/updateCategory.updateCategory
+    events:
+      - http:
+          path: category
+          method: put
+  deleteCategory:
+    handler: api/categories/deleteCategory.deleteCategory
+    events:
+      - http:
+          path: category
+          method: delete
+
+  createPurchase:
+    handler: api/purchases/createPurchase.createPurchase
+    events:
+      - http:
+          path: purchase
+          method: post
+  getPurchase:
+    handler: api/purchases/getPurchase.getPurchase
+    events:
+      - http:
+          path: purchase
+          method: get
+  getPurchases:
+    handler: api/purchases/getPurchases.getPurchases
+    events:
+      - http:
+          path: purchases
+          method: get
+  updatePurchase:
+    handler: api/purchases/updatePurchase.updatePurchase
+    events:
+      - http:
+          path: purchase
+          method: put
+  deletePurchase:
+    handler: api/purchases/deletePurchase.deletePurchase
+    events:
+      - http:
+          path: purchase
+          method: delete
