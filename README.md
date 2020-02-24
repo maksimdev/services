@@ -31,6 +31,9 @@ request: url: '/dev/purchase', method: POST, query_params: '', body: { category:
 request: url: '/dev/purchase', method: GET, query_params: 'id', body: ''
 3) Get purchases:
 request: url: '/dev/purchase', method: GET, query_params: '', body: ''
+- query_params: '' without query_params returns values related with current month; (default)
+- query_params: '?date=2020' or '?date=2020-01' or '?date=2020-01-01';
+- query_params: '?from=2020-01-01&to=2020-02-29';
 4) Update purchase:
 request: url: '/dev/purchase', method: PUT, query_params: 'id', body: { category: '', cost: '', date: '' }
 5) Delete purchase:
