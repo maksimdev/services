@@ -20,7 +20,7 @@ request: url: '/dev/category', method: GET, query_params: 'id', body: ''
 3) Get categories:
 request: url: '/dev/categories', method: GET, query_params: '', body: ''
 4) Update category:
-request: url: '/dev/category', method: PUT, query_params: 'id', body: { username: '' }
+request: url: '/dev/category', method: PUT, query_params: 'id', body: { title: '' }
 5) Delete category:
 request: url: '/dev/category', method: DELETE, query_params: 'id', body: ''
 
@@ -30,7 +30,7 @@ request: url: '/dev/purchase', method: POST, query_params: '', body: { category:
 2) Get purchase:
 request: url: '/dev/purchase', method: GET, query_params: 'id', body: ''
 3) Get purchases:
-request: url: '/dev/purchase', method: GET, query_params: '', body: ''
+request: url: '/dev/purchases', method: GET, query_params: '', body: ''
 - query_params: '' without query_params returns values related with current month; (default)
 - query_params: '?date=2020' or '?date=2020-01' or '?date=2020-01-01';
 - query_params: '?from=2020-01-01&to=2020-02-29';
