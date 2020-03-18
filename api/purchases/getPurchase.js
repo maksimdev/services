@@ -13,7 +13,7 @@ module.exports.getPurchase = (event, context, callback) => {
     if (err) {
       return callback(null, utils.convertToRespose(err, 500))
     }
-    client.query('SELECT * from purchases where "id" = $1;', [id], (err, result) => {
+    client.query(`SELECT "id", "category_id", "cost", to_char("date", 'YYYY-MM-DD') as "date", "created_at", "updated_at" from purchases where "id" = $1;`, [id], (err, result) => {
       release()
       if (err) {
         return callback(null, utils.convertToRespose(err, 500));

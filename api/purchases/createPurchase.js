@@ -14,7 +14,10 @@ module.exports.createPurchase = (event, context, callback) => {
       return callback(null, utils.convertToRespose(err, 500))
     }
     client.query(
-      'INSERT INTO purchases ("category_id", "cost", "date", "created_at", "updated_at", "comment") VALUES($1, $2, $3, now(), now(), $4) RETURNING *;',
+      `
+        INSERT INTO purchases ("category_id", "cost", "date", "created_at", "updated_at", "comment")
+        VALUES($1, $2, $3, now(), now(), $4)
+        RETURNING "id", "category_id", "cost", to_char("date", 'YYYY-MM-DD') as "date", "created_at", "updated_at";`,
       [category_id, cost, date, comment],
       (err, result) => {
       release()

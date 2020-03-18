@@ -13,7 +13,7 @@ module.exports.deletePurchase = (event, context, callback) => {
     if (err) {
       return callback(null, utils.convertToRespose(err, 500))
     }
-    client.query('DELETE FROM purchases where "id" = $1 RETURNING *;', [id], (err, result) => {
+    client.query(`DELETE FROM purchases where "id" = $1 RETURNING "id", "category_id", "cost", to_char("date", 'YYYY-MM-DD') as "date", "created_at", "updated_at";`, [id], (err, result) => {
       release()
       if (err) {
         return callback(null, utils.convertToRespose(err, 500));

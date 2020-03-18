@@ -16,7 +16,7 @@ module.exports.updatePurchase = (event, context, callback) => {
       return callback(null, utils.convertToRespose(err, 500))
     }
     client.query(
-      'UPDATE purchases SET "category_id" = $2, "cost" = $3, "date" = $4, "comment" = $5, "updated_at" = now() WHERE "id" = $1 RETURNING *;',
+      `UPDATE purchases SET "category_id" = $2, "cost" = $3, "date" = $4, "comment" = $5, "updated_at" = now() WHERE "id" = $1 RETURNING "id", "category_id", "cost", to_char("date", 'YYYY-MM-DD') as "date", "created_at", "updated_at";`,
       [id, category_id, cost, date, comment], (err, result) => {
       release()
       if (err) {

@@ -25,7 +25,7 @@ module.exports.getPurchases = (event, context, callback) => {
     if (err) {
       return callback(null, utils.convertToRespose(err, 500));
     }
-    client.query(`SELECT "id", "category_id", "cost", to_char("date", 'DD-MM-YYYY') as "date", "created_at", "updated_at" from purchases where ${mainCondition};`, (err, result) => {
+    client.query(`SELECT "id", "category_id", "cost", to_char("date", 'YYYY-MM-DD') as "date", "created_at", "updated_at" from purchases where ${mainCondition};`, (err, result) => {
       release()
       if (err) {
         return callback(null, utils.convertToRespose(err, 500));

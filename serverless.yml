@@ -40,7 +40,6 @@ functions:
           path: user
           method: delete
           cors: true
-  
   createCategory:
     handler: api/categories/createCategory.createCategory
     events:
@@ -76,7 +75,6 @@ functions:
           path: category
           method: delete
           cors: true
-
   createPurchase:
     handler: api/purchases/createPurchase.createPurchase
     events:
@@ -111,4 +109,11 @@ functions:
       - http:
           path: purchase
           method: delete
+          cors: true
+  getStatistic:
+    handler: api/statistic/getStatistic.getStatistic
+    events:
+      - http:
+          path: statistic
+          method: get
           cors: true
