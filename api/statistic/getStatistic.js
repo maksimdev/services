@@ -11,7 +11,7 @@ module.exports.getStatistic = (event, context, callback) => {
     if (err) {
       return callback(null, utils.convertToRespose(err, 500));
     }
-    client.query('SELECT EXTRACT(YEAR FROM p."date") AS "year", EXTRACT(MONTH FROM p."date") AS "month", p."cost", c."title" FROM purchases AS p JOIN categories AS c ON p."category_id" = c."id";',
+    client.query('WITH temptable AS (SELECT EXTRACT(YEAR FROM p."date") AS "year", EXTRACT(MONTH FROM p."date") AS "month", p."cost" FROM purchases AS p JOIN categories AS c ON p."category_id" = c."id") select "year", "month", sum("cost") from temptable group by ("year", "month");',
     (err, result) => {
       release()
       if (err) {
